@@ -1,3 +1,4 @@
+require("dotenv").config();
 let AWS = require("aws-sdk");
 
 let elasticTranscoder = new AWS.ElasticTranscoder({ region: "us-east-1" });
@@ -13,7 +14,7 @@ exports.handler = function (event, context, callback) {
   let outputKey = sourceKey.split(".")[0];
 
   let params = {
-    PipelineId: "1666946207334-ijbmnm",
+    PipelineId: process.env.PipelineId,
     Input: {
       Key: sourceKey,
     },
